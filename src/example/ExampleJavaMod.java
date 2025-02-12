@@ -1,6 +1,8 @@
 package example;
 
 import arc.*;
+import arc.func.Cons;
+import arc.graphics.Color;
 import arc.util.*;
 import mindustry.*;
 import mindustry.content.*;
