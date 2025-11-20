@@ -7,6 +7,7 @@ import mindustry.content.TechTree.TechNode;
 import mindustry.ctype.UnlockableContent;
 import mindustry.game.Objectives;
 import mindustry.type.ItemStack;
+import mindustry.type.SectorPreset;
 
 public class TestTechTree {
     private static TechNode context = null;
@@ -24,9 +25,8 @@ public class TestTechTree {
 //                node(TestBlocks.processingFactory);
 //            });
 //        });
-
         addToNext(Blocks.graphitePress, () -> {
-            node(TestBlocks.furnace,() -> {
+                node(TestBlocks.furnace,Seq.with(new Objectives.Objective[]{new Objectives.SectorComplete(SectorPresets.groundZero)}),() -> {
                 node(TestBlocks.processingFactory);
             });
         });
@@ -37,13 +37,13 @@ public class TestTechTree {
                 nodeProduce(TestItems.nails);
             });
         });
+
+        addToNext(SectorPresets.groundZero,() -> {
+            //node(TestSector.groundOne,Seq.with(new Objectives.Objective[]{new Objectives.SectorComplete(SectorPresets.groundZero)}),() -> {});
+            node(TestSector.groundOne,Seq.with(new Objectives.SectorComplete(SectorPresets.groundZero)));
+        });
     }
 
-    /**
-     * 找到上一个父节点content 并添加
-     * @param content 父节点
-     * @param run 子节点后的
-     */
     public static void addToNext(UnlockableContent content,Runnable run){
         context = TechTree.all.find(t -> t.content == content);
         run.run();
@@ -80,6 +80,10 @@ public class TestTechTree {
         children.run();
         context = prev;
         return node;
+    }
+
+    public static TechNode node(UnlockableContent content, Seq<Objectives.Objective> objectives) {
+        return node(content, content.researchRequirements(), objectives,() -> {});
     }
 
     public static TechNode node(UnlockableContent content, Seq<Objectives.Objective> objectives, Runnable children) {

@@ -1,14 +1,13 @@
 package AzTest;
 
-import AzTest.content.TestTechTree;
+import AzTest.content.*;
 import arc.Events;
 import arc.util.Time;
 import mindustry.game.EventType;
 import mindustry.mod.Mod;
 import mindustry.ui.dialogs.BaseDialog;
-
-import AzTest.content.TestItems;
-import AzTest.content.TestBlocks;
+import mindustry.world.blocks.payloads.PayloadConveyor;
+import mindustry.world.blocks.payloads.PayloadMassDriver;
 
 
 public class TestMod extends Mod {
@@ -17,16 +16,28 @@ public class TestMod extends Mod {
             Time.run(10f,()->{
                 BaseDialog dialog = new BaseDialog("Welcome to use my mod");
                 dialog.cont.add("I am Azazel, Thank 4 ur playing");
-                Time.run(100f, dialog::addCloseButton);
+                Time.run(10f, dialog::addCloseButton);
                 dialog.show();
             });
         });
+        Events.on(EventType.PayloadDropEvent.class,e->{
+            Time.run(10f,()->{
+                BaseDialog dia = new BaseDialog("Payload drop");
+                dia.cont.add("Drop!!");
+                Time.run(10f,dia::addCloseButton);
+                dia.show();
+            });
+        });
     }
+
+
 
     @Override
     public void loadContent() {
         TestItems.load();
         TestBlocks.load();
+        TestPlanets.load();
+        TestSector.load();
         TestTechTree.load();
     }
 }

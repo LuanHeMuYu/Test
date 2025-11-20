@@ -1,16 +1,24 @@
 package AzTest.content;
 
+import arc.graphics.Color;
+import arc.graphics.Colors;
 import mindustry.content.Fx;
 import mindustry.content.Items;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.world.Block;
+import mindustry.world.blocks.defense.turrets.ItemTurret;
+import mindustry.world.blocks.environment.OreBlock;
 import mindustry.world.blocks.production.GenericCrafter;
 
 public class TestBlocks {
     public static Block
             //铁矿产线
-            furnace, processingFactory;
+            furnace, processingFactory,
+            //矿石
+            ironOre,
+            //炮台
+            fireBull;
 
     public static void load() {
         furnace = new GenericCrafter("furnace"){{
@@ -39,6 +47,17 @@ public class TestBlocks {
             size = 2;
             hasItems = true;
             craftTime = 110f;
+        }};
+
+        ironOre = new OreBlock(TestItems.iron){{
+            oreDefault = true;
+            oreThreshold = 0.81f;
+            oreScale = 23.47619f;
+        }};
+
+        fireBull = new ItemTurret("fire"){{
+            alwaysUnlocked = true;
+            ammo();
         }};
     }
 }
