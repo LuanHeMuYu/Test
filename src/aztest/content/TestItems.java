@@ -1,4 +1,4 @@
-package AzTest.content;
+package aztest.content;
 
 
 import arc.graphics.Color;

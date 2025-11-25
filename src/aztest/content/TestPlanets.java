@@ -1,18 +1,10 @@
-﻿package AzTest.content;
+package aztest.content;
 
-import arc.func.Cons;
-import arc.func.Prov;
 import arc.graphics.Color;
 import mindustry.content.Planets;
-import mindustry.game.Rules;
-import mindustry.graphics.Pal;
-import mindustry.graphics.g3d.GenericMesh;
 import mindustry.graphics.g3d.HexMesh;
 import mindustry.graphics.g3d.HexSkyMesh;
 import mindustry.graphics.g3d.MultiMesh;
-import mindustry.maps.generators.PlanetGenerator;
-import mindustry.maps.planet.AsteroidGenerator;
-import mindustry.maps.planet.ErekirPlanetGenerator;
 import mindustry.maps.planet.SerpuloPlanetGenerator;
 import mindustry.type.Planet;
 

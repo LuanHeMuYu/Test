@@ -1,7 +1,5 @@
-package AzTest.content;
+package aztest.content;
 
-import arc.graphics.Color;
-import arc.graphics.Colors;
 import mindustry.content.Fx;
 import mindustry.content.Items;
 import mindustry.type.Category;

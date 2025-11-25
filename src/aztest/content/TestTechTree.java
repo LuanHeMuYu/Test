@@ -1,18 +1,16 @@
-package AzTest.content;
+package aztest.content;
 
-import arc.func.Boolf;
 import arc.struct.Seq;
 import mindustry.content.*;
 import mindustry.content.TechTree.TechNode;
 import mindustry.ctype.UnlockableContent;
 import mindustry.game.Objectives;
 import mindustry.type.ItemStack;
-import mindustry.type.SectorPreset;
 
 public class TestTechTree {
     private static TechNode context = null;
-    public static Seq<TechNode> all = new Seq();
-    public static Seq<TechNode> roots = new Seq();
+    public static Seq<TechNode> all = new Seq<>();
+    public static Seq<TechNode> roots = new Seq<>();
 
     public static void load(){
 //        Planets.serpulo.techTree = nodeRoot("TestTechTree",Blocks.coreShard,() -> {
@@ -40,7 +38,7 @@ public class TestTechTree {
 
         addToNext(SectorPresets.groundZero,() -> {
             //node(TestSector.groundOne,Seq.with(new Objectives.Objective[]{new Objectives.SectorComplete(SectorPresets.groundZero)}),() -> {});
-            node(TestSector.groundOne,Seq.with(new Objectives.SectorComplete(SectorPresets.groundZero)));
+//            node(TestSector.groundOne,Seq.with(new Objectives.SectorComplete(SectorPresets.groundZero)));
         });
     }
 
@@ -66,7 +64,7 @@ public class TestTechTree {
     }
 
     public static TechNode node(UnlockableContent content, ItemStack[] requirements, Runnable children) {
-        return node(content, requirements, (Seq)null, children);
+        return node(content, requirements, null, children);
     }
 
     public static TechNode node(UnlockableContent content, ItemStack[] requirements, Seq<Objectives.Objective> objectives, Runnable children) {
@@ -100,7 +98,7 @@ public class TestTechTree {
     }
 
     public static TechNode nodeProduce(UnlockableContent content, Runnable children) {
-        return nodeProduce(content, new Seq(), children);
+        return nodeProduce(content, new Seq<>(), children);
     }
 
     public static TechNode nodeProduce(UnlockableContent content){

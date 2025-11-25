@@ -1,13 +1,11 @@
-package AzTest;
+package aztest;
 
-import AzTest.content.*;
+import aztest.content.*;
 import arc.Events;
 import arc.util.Time;
 import mindustry.game.EventType;
 import mindustry.mod.Mod;
 import mindustry.ui.dialogs.BaseDialog;
-import mindustry.world.blocks.payloads.PayloadConveyor;
-import mindustry.world.blocks.payloads.PayloadMassDriver;
 
 
 public class TestMod extends Mod {

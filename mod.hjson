@@ -4,7 +4,7 @@ name: "test_mod"
 
 author: "Azazel"
 
-main: "AzTest.TestMod"
+main: "aztest.TestMod"
 
 description: "Test Mod In ThisGameVer:2.0.5"
 
