@@ -1,3 +1,19 @@
+# 介绍
+
+Halo,这是我关于像素工厂的教程项目。
+
+你可以在b站上看到这一系列的教程。
+
+这里是源码，可以作为参考。
+
+# Introduction
+
+Hi I'm Azazel. This is my tutorial of Mindustry.
+
+You can see the Video on BiliBili Website. You can search "翎肆忤鸠".
+
+This is source code,you can view these codes to study how to develop a mod in Mindustry.
+
 # Mindustry Java Mod Template
 A Java Mindustry mod template that works on Android and PC. The Kotlin version of this mod can be seen [here](https://github.com/Anuken/MindustryKotlinModTemplate).
 
