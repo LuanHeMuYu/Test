@@ -6,9 +6,9 @@ author: "Azazel"
 
 main: "aztest.TestMod"
 
-description: "Test Mod In ThisGameVer:2.0.7"
+description: "Test Mod In ThisGameVer:2.0.9"
 
-version: 2.0.7
+version: 2.0.9
 
 minGameVersion: 145
 

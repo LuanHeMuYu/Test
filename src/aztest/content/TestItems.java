@@ -8,17 +8,24 @@ public class TestItems {
     ///通过bundles/bundle_zh_CN.properties进行多语言化
     public static Item
             //铁的产线
-            iron,ironPlate,nails,gear,wood,
+            ironOre,iron,ironPlate,nails,gear,wood,
             //钢铁工艺
             steel,steelPlate
             ;
 
     public static void load(){
-        //铁锭
-        iron = new Item("iron", Color.lightGray){{
+        //铁矿
+        ironOre = new Item("ironOre", Color.lightGray){{
             hardness = 1;
             cost = 0.5f;
             alwaysUnlocked = true;
+        }};
+
+        //铁锭
+        iron = new  Item("iron", Color.lightGray){{
+           hardness = 1;
+           cost = 0.5f;
+           alwaysUnlocked = true;
         }};
 
         //铁板

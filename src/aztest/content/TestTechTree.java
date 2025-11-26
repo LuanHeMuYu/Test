@@ -35,7 +35,7 @@ public class TestTechTree {
         });
 
         addToNext(Items.copper,() -> {
-            nodeProduce(TestItems.iron,() -> {
+            nodeProduce(TestItems.ironOre,() -> {
                 nodeProduce(TestItems.ironPlate,() -> {});
                 nodeProduce(TestItems.nails);
                 nodeProduce(TestItems.gear);

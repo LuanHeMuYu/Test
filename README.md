@@ -14,6 +14,18 @@ You can see the Video on BiliBili Website. You can search "翎肆忤鸠".
 
 This is source code,you can view these codes to study how to develop a mod in Mindustry.
 
+# Here is Items & Blocks RelationShip map
+# 这里是物品工厂关系对照表
+
+```mermaid
+graph LR
+    铁矿 --经熔炉--> 铁锭 --经扎铁机--> 铁板 --经制钉厂--> 钉子-..-> 可用于钉枪
+    钉子 --经齿轮厂--> 齿轮
+    铁板 --经齿轮厂--> 齿轮
+    铁板 --经高炉--> 钢 --经轧钢厂--> 钢板
+    木材 --由基础/高级伐木机--- 木材
+```
+
 # Mindustry Java Mod Template
 A Java Mindustry mod template that works on Android and PC. The Kotlin version of this mod can be seen [here](https://github.com/Anuken/MindustryKotlinModTemplate).
 
