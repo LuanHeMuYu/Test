@@ -8,7 +8,7 @@ public class TestItems {
     ///通过bundles/bundle_zh_CN.properties进行多语言化
     public static Item
             //铁的产线
-            iron,ironPlate,nails,gear,
+            iron,ironPlate,nails,gear,wood,
             //钢铁工艺
             steel,steelPlate
             ;
@@ -24,6 +24,13 @@ public class TestItems {
         //铁板
         ironPlate = new Item("iron_plate",Color.gray){{
             cost = 0.6f;
+            hardness = 1;
+            alwaysUnlocked = false;
+        }};
+
+        //木头
+        wood = new Item("wood", Color.brown){{
+            cost = 0.3f;
             hardness = 1;
             alwaysUnlocked = false;
         }};
@@ -48,6 +55,7 @@ public class TestItems {
             alwaysUnlocked = false;
         }};
 
+        //钢板
         steelPlate = new Item("steel_plate",Color.gray){{
             cost = 0.7f;
             hardness = 1;

@@ -25,7 +25,12 @@ public class TestTechTree {
 //        });
         addToNext(Blocks.graphitePress, () -> {
                 node(TestBlocks.furnace,Seq.with(new Objectives.Objective[]{new Objectives.SectorComplete(SectorPresets.groundZero)}),() -> {
-                node(TestBlocks.processingFactory);
+                node(TestBlocks.furnaceAdvance);
+                node(TestBlocks.processingFactory, () -> {
+                    node(TestBlocks.fireBull);
+                    node(TestBlocks.gearAssemblyMachine);
+                });
+                node(TestBlocks.axeBasic, () -> node(TestBlocks.axeAdvance));
             });
         });
 
@@ -33,12 +38,20 @@ public class TestTechTree {
             nodeProduce(TestItems.iron,() -> {
                 nodeProduce(TestItems.ironPlate,() -> {});
                 nodeProduce(TestItems.nails);
+                nodeProduce(TestItems.gear);
+                nodeProduce(TestItems.steel, () -> {
+                    nodeProduce(TestItems.steelPlate,() -> {});
+                });
             });
+        });
+
+        addToNext(Items.copper, () -> {
+            nodeProduce(TestItems.wood);
         });
 
         addToNext(SectorPresets.groundZero,() -> {
             //node(TestSector.groundOne,Seq.with(new Objectives.Objective[]{new Objectives.SectorComplete(SectorPresets.groundZero)}),() -> {});
-//            node(TestSector.groundOne,Seq.with(new Objectives.SectorComplete(SectorPresets.groundZero)));
+            node(TestSector.groundOne,Seq.with(new Objectives.SectorComplete(SectorPresets.groundZero)));
         });
     }
 
