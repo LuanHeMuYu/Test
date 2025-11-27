@@ -14,16 +14,17 @@ import mindustry.type.Planet;
  * @date 2025/5/23 下午2:59
  */
 public class TestPlanets {
-    public static Planet nonepro, test;
+    public static Planet neopro, test;
 
     public static void load() {
-        nonepro = new Planet("none", Planets.sun, 1.0f, 3) {{
-            this.generator = new SerpuloPlanetGenerator();
-//            this.generator = new AsteroidGenerator();
+        neopro = new Planet("neopro", Planets.sun, 1.0f, 3) {{
+            this.generator = new TestPlanetsGenerator();
 
             this.meshLoader = () -> {
                 return new HexMesh(this, 6);
             };
+
+            startSector = 1;
 
             this.iconColor = Color.valueOf("#ff9899");
             this.atmosphereColor = Color.valueOf("#908232");

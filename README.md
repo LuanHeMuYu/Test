@@ -26,6 +26,21 @@ graph LR
     木材 --由基础/高级伐木机--- 木材
 ```
 
+# Here is Research Tree
+# 这里是科技树
+
+```mermaid
+graph LR
+    核心 --> 铜矿 --> 铁矿 --> 铁板
+    铁板 --> 钉子
+    铁板 --> 齿轮
+    铁板 --> 钢铁 --> 钢板
+    核心 --> 机械钻头 --> 石墨压缩机 --> 熔炉 --> 高炉
+    熔炉 --> 制钉厂 --> 钉枪
+    制钉厂 --> 齿轮组装机
+    熔炉 --> 基础伐木场 --> 高级伐木场
+```
+
 # Mindustry Java Mod Template
 A Java Mindustry mod template that works on Android and PC. The Kotlin version of this mod can be seen [here](https://github.com/Anuken/MindustryKotlinModTemplate).
 

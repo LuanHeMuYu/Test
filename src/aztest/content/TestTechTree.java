@@ -23,31 +23,26 @@ public class TestTechTree {
 //                node(TestBlocks.processingFactory);
 //            });
 //        });
-        addToNext(Blocks.graphitePress, () -> {
-                node(TestBlocks.furnace,Seq.with(new Objectives.Objective[]{new Objectives.SectorComplete(SectorPresets.groundZero)}),() -> {
-                node(TestBlocks.furnaceAdvance);
-                node(TestBlocks.processingFactory, () -> {
-                    node(TestBlocks.fireBull);
-                    node(TestBlocks.gearAssemblyMachine);
-                });
-                node(TestBlocks.axeBasic, () -> node(TestBlocks.axeAdvance));
-            });
+        addToNext(Blocks.graphitePress, () -> node(TestBlocks.furnace,Seq.with(new Objectives.Objective[]{new Objectives.SectorComplete(SectorPresets.groundZero)}),() -> {
+        node(TestBlocks.furnaceAdvance);
+        node(TestBlocks.processingFactory, () -> {
+            node(TestBlocks.fireBull);
+            node(TestBlocks.gearAssemblyMachine);
         });
+        node(TestBlocks.axeBasic, () -> node(TestBlocks.axeAdvance));
+    }));
 
-        addToNext(Items.copper,() -> {
-            nodeProduce(TestItems.ironOre,() -> {
-                nodeProduce(TestItems.ironPlate,() -> {});
+        addToNext(Items.copper,() -> nodeProduce(TestItems.ironOre,() -> {
+            nodeProduce(TestItems.ironPlate,() -> {
                 nodeProduce(TestItems.nails);
                 nodeProduce(TestItems.gear);
                 nodeProduce(TestItems.steel, () -> {
                     nodeProduce(TestItems.steelPlate,() -> {});
                 });
             });
-        });
+        }));
 
-        addToNext(Items.copper, () -> {
-            nodeProduce(TestItems.wood);
-        });
+        addToNext(Items.copper, () -> nodeProduce(TestItems.wood));
 
         addToNext(SectorPresets.groundZero,() -> {
             //node(TestSector.groundOne,Seq.with(new Objectives.Objective[]{new Objectives.SectorComplete(SectorPresets.groundZero)}),() -> {});
