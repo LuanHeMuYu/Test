@@ -4,6 +4,7 @@ import mindustry.content.Fx;
 import mindustry.content.Items;
 import mindustry.entities.bullet.BasicBulletType;
 import mindustry.entities.pattern.ShootAlternate;
+import mindustry.gen.PayloadUnit;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.world.Block;

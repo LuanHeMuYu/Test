@@ -21,7 +21,7 @@ public class TestPlanets {
             this.generator = new TestPlanetsGenerator();
 
             this.meshLoader = () -> {
-                return new HexMesh(this, 6);
+                return new HexMesh(this, 4);
             };
 
             startSector = 1;

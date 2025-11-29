@@ -6,9 +6,9 @@ author: "Azazel"
 
 main: "aztest.TestMod"
 
-description: "Test Mod is Test planets gen"
+description: "Test Mod is Test planets gen V 2.0.11"
 
-version: 2.0.10
+version: 2.0.11
 
 minGameVersion: 145
 
