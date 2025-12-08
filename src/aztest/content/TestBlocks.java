@@ -1,5 +1,6 @@
 package aztest.content;
 
+import mindustry.content.Blocks;
 import mindustry.content.Fx;
 import mindustry.content.Items;
 import mindustry.entities.bullet.BasicBulletType;
@@ -11,6 +12,7 @@ import mindustry.world.Block;
 import mindustry.world.blocks.defense.turrets.ItemTurret;
 import mindustry.world.blocks.environment.OreBlock;
 import mindustry.world.blocks.production.GenericCrafter;
+import mindustry.world.blocks.sandbox.ItemSource;
 
 public class TestBlocks {
     public static Block//铁矿产线
@@ -22,7 +24,14 @@ public class TestBlocks {
             //炮台
             fireBull;
 
+    public static Block debugSource;
+
     public static void load() {
+        debugSource = new ItemSource("Debug Source"){{
+            requirements(Category.crafting,ItemStack.with(TestItems.ironOre,1));
+            alwaysUnlocked = true;
+        }};
+
         //熔炉
         furnace = new GenericCrafter("furnace") {{
             requirements(Category.crafting, ItemStack.with(Items.copper, 100, Items.lead, 80, TestItems.ironOre, 30));//建造所需100个铜 80个铅 30个铁矿

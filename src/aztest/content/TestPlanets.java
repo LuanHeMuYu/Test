@@ -46,7 +46,24 @@ public class TestPlanets {
             alwaysUnlocked = true;
         }};
 
-        test = new Planet("t", Planets.serpulo, 1.0f) {{
+        test = new Planet("t", Planets.serpulo, 1f,3) {{
+            this.generator = new SerpuloPlanetGenerator();
+
+            this.meshLoader = () -> {
+                return new HexMesh(this, 4);
+            };
+
+            startSector = 1;
+            this.iconColor = Color.valueOf("#ff9899");
+            this.atmosphereColor = Color.valueOf("#908232");
+            this.atmosphereRadIn = 0.02F;
+            this.atmosphereRadOut = 0.3F;
+
+            this.cloudMeshLoader = () -> new MultiMesh(
+                    new HexSkyMesh(this,3,0.3f,0.13f,6, Color.valueOf("#3299CC"),2,0.3F,0.87F,0.2F),
+                    new HexSkyMesh(this,1,0.55f,0.23f,6, Color.valueOf("#F5F5F5"),1,0.21F,0.45F,0.3F)
+            );
+
             alwaysUnlocked = true;
         }};
     }

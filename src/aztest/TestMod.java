@@ -3,9 +3,12 @@ package aztest;
 import aztest.content.*;
 import arc.Events;
 import arc.util.Time;
+import mindustry.content.Planets;
 import mindustry.game.EventType;
 import mindustry.mod.Mod;
 import mindustry.ui.dialogs.BaseDialog;
+
+import aztest.content.TestPlanetsGenerator;
 
 
 public class TestMod extends Mod {
