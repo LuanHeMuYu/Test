@@ -1,8 +1,7 @@
 package aztest.content;
 
-import mindustry.content.Blocks;
-import mindustry.content.Fx;
-import mindustry.content.Items;
+import arc.struct.Seq;
+import mindustry.content.*;
 import mindustry.entities.bullet.BasicBulletType;
 import mindustry.entities.pattern.ShootAlternate;
 import mindustry.gen.PayloadUnit;
@@ -13,6 +12,9 @@ import mindustry.world.blocks.defense.turrets.ItemTurret;
 import mindustry.world.blocks.environment.OreBlock;
 import mindustry.world.blocks.production.GenericCrafter;
 import mindustry.world.blocks.sandbox.ItemSource;
+import mindustry.world.blocks.units.UnitFactory;
+
+import static mindustry.type.ItemStack.with;
 
 public class TestBlocks {
     public static Block//铁矿产线
@@ -28,13 +30,13 @@ public class TestBlocks {
 
     public static void load() {
         debugSource = new ItemSource("Debug Source"){{
-            requirements(Category.crafting,ItemStack.with(TestItems.ironOre,1));
+            requirements(Category.crafting, with(TestItems.ironOre,1));
             alwaysUnlocked = true;
         }};
 
         //熔炉
         furnace = new GenericCrafter("furnace") {{
-            requirements(Category.crafting, ItemStack.with(Items.copper, 100, Items.lead, 80, TestItems.ironOre, 30));//建造所需100个铜 80个铅 30个铁矿
+            requirements(Category.crafting, with(Items.copper, 100, Items.lead, 80, TestItems.ironOre, 30));//建造所需100个铜 80个铅 30个铁矿
 
             alwaysUnlocked = false;
             craftEffect = Fx.pulverizeMedium;
@@ -49,11 +51,11 @@ public class TestBlocks {
 
         //高炉
         furnaceAdvance = new GenericCrafter("furnaceAdvance") {{
-            requirements(Category.crafting, ItemStack.with(Items.copper, 100, Items.lead, 80, TestItems.ironPlate, 30));//建造所需100个铜 80个铅 30个铁矿
+            requirements(Category.crafting, with(Items.copper, 100, Items.lead, 80, TestItems.ironPlate, 30));//建造所需100个铜 80个铅 30个铁矿
 
             alwaysUnlocked = false;
             outputItem = new ItemStack(TestItems.steel, 1);
-            consumeItems(ItemStack.with(TestItems.ironOre, 2, Items.coal, 1));
+            consumeItems(with(TestItems.ironOre, 2, Items.coal, 1));
 
             size = 2;
             hasItems = true;
@@ -63,11 +65,11 @@ public class TestBlocks {
 
         //扎铁机
         rollingMill_Iron = new  GenericCrafter("rollingMill_Iron") {{
-            requirements(Category.crafting, ItemStack.with(Items.copper, 100, Items.lead, 80, TestItems.iron, 30));
+            requirements(Category.crafting, with(Items.copper, 100, Items.lead, 80, TestItems.iron, 30));
 
             alwaysUnlocked = false;
             outputItem = new ItemStack(TestItems.ironPlate, 2);
-            consumeItems(ItemStack.with(TestItems.iron,1));
+            consumeItems(with(TestItems.iron,1));
 
             size = 2;
             hasItems = true;
@@ -77,11 +79,11 @@ public class TestBlocks {
 
         //轧钢机
         rollingMill_Steel = new  GenericCrafter("rollingMill_Steel") {{
-            requirements(Category.crafting, ItemStack.with(Items.copper, 100, Items.lead, 80, TestItems.iron, 30));
+            requirements(Category.crafting, with(Items.copper, 100, Items.lead, 80, TestItems.iron, 30));
 
             alwaysUnlocked = false;
             outputItem = new ItemStack(TestItems.steel, 2);
-            consumeItems(ItemStack.with(TestItems.steelPlate,1));
+            consumeItems(with(TestItems.steelPlate,1));
 
             size = 2;
             hasItems = true;
@@ -91,7 +93,7 @@ public class TestBlocks {
 
         //初级伐木场
         axeBasic = new GenericCrafter("axeBasic") {{
-            requirements(Category.crafting, ItemStack.with(Items.copper, 100, Items.lead, 80));
+            requirements(Category.crafting, with(Items.copper, 100, Items.lead, 80));
 
             alwaysUnlocked = true;
             outputItem = new ItemStack(TestItems.wood, 1);
@@ -103,7 +105,7 @@ public class TestBlocks {
 
         //高级伐木场
         axeAdvance = new GenericCrafter("axeAdvance") {{
-            requirements(Category.crafting, ItemStack.with(Items.copper, 100, Items.lead, 80, TestItems.steel, 30));
+            requirements(Category.crafting, with(Items.copper, 100, Items.lead, 80, TestItems.steel, 30));
 
             alwaysUnlocked = false;
             outputItem = new ItemStack(TestItems.wood, 2);
@@ -116,7 +118,7 @@ public class TestBlocks {
 
         //制钉厂
         processingFactory = new GenericCrafter("processingFactory") {{
-            requirements(Category.crafting, ItemStack.with(Items.copper, 100, Items.lead, 80, TestItems.ironPlate, 30));//建造所需100个铜 80个铅 30个铁矿
+            requirements(Category.crafting, with(Items.copper, 100, Items.lead, 80, TestItems.ironPlate, 30));//建造所需100个铜 80个铅 30个铁矿
 
             alwaysUnlocked = false;
             craftEffect = Fx.blockCrash;
@@ -131,7 +133,7 @@ public class TestBlocks {
 
         //齿轮组装机
         gearAssemblyMachine = new GenericCrafter("gearAssemblyMachine") {{
-            requirements(Category.crafting, ItemStack.with(Items.copper, 100, Items.lead, 80, TestItems.ironOre, 30));
+            requirements(Category.crafting, with(Items.copper, 100, Items.lead, 80, TestItems.ironOre, 30));
             alwaysUnlocked = true;
             craftEffect = Fx.pulverizeMedium;
             outputItem = new ItemStack(TestItems.gear, 1);
@@ -139,7 +141,7 @@ public class TestBlocks {
             hasItems = true;
             craftTime = 110f;
             consumePower(0.5f);
-            consumeItems(ItemStack.with(TestItems.ironPlate, 4, TestItems.nails, 4));
+            consumeItems(with(TestItems.ironPlate, 4, TestItems.nails, 4));
         }};
 
         //铁矿石
@@ -151,7 +153,7 @@ public class TestBlocks {
 
         //钉子炮塔
         fireBull = new ItemTurret("fire") {{
-            requirements(Category.turret, ItemStack.with(Items.copper, 100, Items.lead, 80, TestItems.ironOre, 20));
+            requirements(Category.turret, with(Items.copper, 100, Items.lead, 80, TestItems.ironOre, 20));
 
             alwaysUnlocked = false;
             ammo(TestItems.nails, new BasicBulletType(8F, 3.5F) {

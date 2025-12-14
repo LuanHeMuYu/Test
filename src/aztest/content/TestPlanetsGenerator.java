@@ -11,23 +11,27 @@ import arc.util.noise.Ridged;
 import arc.util.noise.Simplex;
 import mindustry.Vars;
 import mindustry.content.Blocks;
+import mindustry.content.UnitTypes;
 import mindustry.game.Schematics;
+import mindustry.graphics.g3d.HexSkyMesh;
+import mindustry.graphics.g3d.PlanetMesh;
 import mindustry.maps.generators.PlanetGenerator;
 import mindustry.type.Sector;
+import mindustry.type.UnitType;
 import mindustry.ui.dialogs.BaseDialog;
 import mindustry.world.Block;
 import mindustry.world.Tile;
 import mindustry.world.Tiles;
+import mindustry.world.blocks.units.UnitFactory;
 
 public class TestPlanetsGenerator extends PlanetGenerator {
-
-//    Block[][] arr = new Block[][]{
+    //    Block[][] arr = new Block[][]{
 //            {Blocks.stone, Blocks.snow, Blocks.stone},
 //            {Blocks.stone, Blocks.sand, Blocks.sand},
 //            {Blocks.stone, Blocks.water, Blocks.water},
 //    };
     Block[] arr = new Block[]{
-            Blocks.stone, Blocks.snow, Blocks.sand
+            Blocks.water, Blocks.grass, Blocks.stone, Blocks.snow
     };
 
 //    @Override
@@ -92,7 +96,8 @@ public class TestPlanetsGenerator extends PlanetGenerator {
 //            if(rand.nextInt(Math.abs(this.seed == 0 ? 1 : this.seed)) % 100 > 90)
 //                inverseFloodFill(tiles.get(2,2));
 //        });
-////        inverseFloodFill(tiles.getn(Vars.world.tiles.width / 2,Vars.world.tiles.height / 2));
+
+    /// /        inverseFloodFill(tiles.getn(Vars.world.tiles.width / 2,Vars.world.tiles.height / 2));
 //
 //
 //
@@ -156,10 +161,11 @@ public class TestPlanetsGenerator extends PlanetGenerator {
     }
 
     Block getBlcok(Vec3 position) {
+        return Blocks.salt;
         // 赛普罗星球的getBlock逻辑 通过一系列随机数，噪声 最后得到一个数字，这个数字是开头Block数组的索引，然后就知道这个方块是什么了
         // 埃里克尔也是得到索引，不过他没有通过随机数获取这个索引，而是简单的缩放
-        Rand rand = new Rand((long) rawHeight(position));
-        return arr[(int) Simplex.noise3d(this.seed,7.0f,0.5f,0.3334f,position.x,position.y,position.z) % arr.length];
+//        Rand rand = new Rand((long) rawHeight(position));
+//        return arr[(int) Simplex.noise3d(this.seed,7.0f,0.5f,0.3334f,position.x,position.y,position.z) % arr.length];
 //        return arr[Math.abs(rand.nextInt()) % arr.length][(int) Simplex.noise3d(this.seed,7.0f,0.5f,0.3334f,position.x,position.y,position.z) % arr[0].length];
     }
 
@@ -172,8 +178,10 @@ public class TestPlanetsGenerator extends PlanetGenerator {
     /// 写星球表面的颜色的 :D
     @Override
     public Color getColor(Vec3 vec3) {
-//        return Color.white;
-        Block block = getBlcok(vec3);
-        return Tmp.c1.set(block.mapColor).a(1.0f - block.albedo);
+        //高度确定?
+        float height = rawHeight(vec3);
+        return arr[(int) Mathf.clamp(height * 10, 0, arr.length - 1)].mapColor;
+//        TestItems.ironOre.description = TestItems.ironOre.description + " " + height;
+//        return arr[2].mapColor;
     }
 }

@@ -8,7 +8,7 @@ Halo,这是我关于像素工厂的教程项目。
 
 # Introduction
 
-Hi I'm Azazel. This is my tutorial of Mindustry.
+Hi I'm Azazel. This is my tutorial of Mindustry Mod.
 
 You can see the Video on BiliBili Website. You can search "翎肆忤鸠".
 
