@@ -16,11 +16,13 @@ import mindustry.game.Schematics;
 import mindustry.graphics.g3d.HexSkyMesh;
 import mindustry.graphics.g3d.PlanetMesh;
 import mindustry.maps.generators.PlanetGenerator;
+import mindustry.maps.planet.SerpuloPlanetGenerator;
 import mindustry.type.Sector;
 import mindustry.type.UnitType;
 import mindustry.ui.dialogs.BaseDialog;
 import mindustry.world.Block;
 import mindustry.world.Tile;
+import mindustry.world.TileGen;
 import mindustry.world.Tiles;
 import mindustry.world.blocks.units.UnitFactory;
 
@@ -34,7 +36,64 @@ public class TestPlanetsGenerator extends PlanetGenerator {
             Blocks.water, Blocks.grass, Blocks.stone, Blocks.snow
     };
 
-//    @Override
+    @Override
+    protected void generate() {
+//        TestItems.ironOre.description = TestItems.ironOre.description + " 1";
+//        cells(4);
+//        distort(10f,14f);
+
+        pass((xx, yy) -> {
+            if (xx % 10 == 0 || yy % 10 == 0)
+                this.block = Blocks.copperWall;
+        });
+
+        median(2);
+
+        Seq<Block> ores = new Seq<>();
+
+        ores.add(Blocks.oreCopper);
+        ores.add(Blocks.oreCoal);
+        ores.add(TestBlocks.ironOre);
+        ores.add(Blocks.oreScrap);
+
+        FloatSeq frequencies = new FloatSeq();
+        for (int i = 0; i < ores.size; i++) {
+            frequencies.add(rand.random(-0.1f, 0.01f) - i * 0.01f + sector.tile.v.y * 0.04f);
+        }
+
+        pass((x, y) -> {
+            if (!floor.asFloor().hasSurface()) return;
+
+            int offsetX = x - 4, offsetY = y + 23;
+            for (int i = ores.size - 1; i >= 0; i--) {
+                Block entry = ores.get(i);
+                float freq = frequencies.get(i);
+                if (Math.abs(0.5f - noise(offsetX, offsetY + i * 999, 2, 0.7, (40 + i * 2))) > 0.22f + i * 0.01 &&
+                        Math.abs(0.5f - noise(offsetX, offsetY - i * 999, 1, 1, (30 + i * 4))) > 0.37f + freq) {
+                    ore = entry;
+                    break;
+                }
+            }
+
+            if (ore == Blocks.oreScrap && rand.chance(0.33)) {
+                floor = Blocks.metalFloorDamaged;
+            }
+
+            if(ore == TestBlocks.ironOre && rand.chance(0.66)) {
+                if(rand.chance(0.33))
+                    floor = Blocks.magmarock;
+                else
+                    floor = Blocks.hotrock;
+            }
+        });
+
+//        inverseFloodFill(path.get(path.size / 2));
+
+//        brush(path, 3);
+
+    }
+
+    //    @Override
 //    protected void generate() {
 //        cells(4);
 //        distort(10f, 12f);
@@ -180,6 +239,7 @@ public class TestPlanetsGenerator extends PlanetGenerator {
     public Color getColor(Vec3 vec3) {
         //高度确定?
         float height = rawHeight(vec3);
+//        return Blocks.grass.mapColor;
         return arr[(int) Mathf.clamp(height * 10, 0, arr.length - 1)].mapColor;
 //        TestItems.ironOre.description = TestItems.ironOre.description + " " + height;
 //        return arr[2].mapColor;

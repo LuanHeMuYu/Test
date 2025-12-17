@@ -15,7 +15,7 @@ public class TestItems {
 
     public static void load(){
         //铁矿
-        ironOre = new Item("ironOre", Color.lightGray){{
+        ironOre = new Item("ironOre", Color.valueOf("#F0692A")){{
             hardness = 1;
             cost = 0.5f;
             alwaysUnlocked = true;

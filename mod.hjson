@@ -10,6 +10,6 @@ description: "Test Mod is Test planets gen V 2.0.12"
 
 version: 2.0.11
 
-minGameVersion: 145
+minGameVersion: 146
 
 java: true
