@@ -36,6 +36,7 @@ public class TestPlanetsGenerator extends PlanetGenerator {
             Blocks.water, Blocks.grass, Blocks.stone, Blocks.snow
     };
 
+
     @Override
     protected void generate() {
 //        TestItems.ironOre.description = TestItems.ironOre.description + " 1";
@@ -156,6 +157,11 @@ public class TestPlanetsGenerator extends PlanetGenerator {
 //                inverseFloodFill(tiles.get(2,2));
 //        });
 
+    @Override
+    public boolean skip(Vec3 position) {
+        return true;
+    }
+
     /// /        inverseFloodFill(tiles.getn(Vars.world.tiles.width / 2,Vars.world.tiles.height / 2));
 //
 //
@@ -212,11 +218,22 @@ public class TestPlanetsGenerator extends PlanetGenerator {
 //            }
 //        });
 //
-//    }
+//    }'
+
+
 
     float rawHeight(Vec3 position) {
         position = Tmp.v33.set(position);
-        return (Mathf.pow(Simplex.noise3d(this.seed, (double) 7.0F, (double) 0.5F, (double) 0.33333334F, (double) position.x, (double) position.y, (double) position.z), 2.3F));
+        return (Mathf.pow(
+                Simplex.noise3d(
+                        this.seed,
+                        (double) 7.0F,
+                        (double) 0.5F,
+                        (double) 0.33333334F,
+                        (double) position.x,
+                        (double) position.y,
+                        (double) position.z),
+                2.3F));
     }
 
     Block getBlcok(Vec3 position) {

@@ -18,7 +18,7 @@ public class TestPlanets {
 
     public static void load() {
         neopro = new Planet("neopro", Planets.sun, 1.0f, 3) {{
-            this.generator = new TestPlanetsGenerator();
+            this.generator = new AzPlanetsGenerator();
 
             this.meshLoader = () -> {
                 return new HexMesh(this, 4);

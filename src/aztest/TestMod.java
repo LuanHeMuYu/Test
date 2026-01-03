@@ -1,5 +1,6 @@
 package aztest;
 
+import arc.input.KeyCode;
 import aztest.content.*;
 import arc.Events;
 import arc.util.Time;
@@ -9,6 +10,12 @@ import mindustry.mod.Mod;
 import mindustry.ui.dialogs.BaseDialog;
 
 import aztest.content.TestPlanetsGenerator;
+
+import java.awt.*;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 
 public class TestMod extends Mod {
@@ -27,11 +34,15 @@ public class TestMod extends Mod {
                 dia.cont.add("Drop!!");
                 Time.run(10f,dia::addCloseButton);
                 dia.show();
+                dia.title.setText("Payload drop");
             });
+
+            Events.run(EventType.ClientChatEvent.class,() -> {
+
+            });
+
         });
     }
-
-
 
     @Override
     public void loadContent() {
